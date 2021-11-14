@@ -1,5 +1,11 @@
 #!/bin/sh
 
-export STREAMLIT_SERVER_PORT=$PORT
-export STREAMLIT_SERVER_HEADLESS=true
-export STREAMLIT_SERVER_ENABLECORS=false
+mkdir -p ~/.streamlit/
+
+echo "\
+[server]\n\
+headless = true\n\
+port = $PORT\n\
+enableCORS = false\n\
+\n\
+" > ~/.streamlit/config.toml
