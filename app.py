@@ -47,9 +47,19 @@ if not combined_history.empty:
         r1[2].metric(label='Fiat Purchase Amount',
                      value='$ {0}'.format(int(fiat_purchase)))
         st.info('''
-                Fiat purchase: crypto purchase made from the fiat wallet which in general do not incur fees.\n
-                Direct purchase: crypto purchase made from credit or debit card which has a fee of roughly 1.25%.
+                Fiat purchase: crypto purchase made from the
+                fiat wallet which in general do not incur fees.\n
+                Direct purchase: crypto purchase made from credit
+                or debit card which has a fee of roughly 1.25%.
                 ''')
+        st.warning('''
+                   For now, the summary does not take withdraw into
+                   consideration. For example, if you invested $1000
+                   and then withdraw $200, the total investment shown
+                   will be $1000 instead of $800. This is the current
+                   limitation (since I have not yet taken any profit)
+                   and can be added in the future should there be a need.
+                   ''')
         st.metric(label='Total CRO Reward (excluding earn)',
                   value='{0} CRO'.format(int(total_cro_rewards)))
         reward_row = st.columns(3)
