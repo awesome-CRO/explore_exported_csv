@@ -5,7 +5,7 @@ from inputs import (fetch_crypto_wallet_history, fetch_feature_flags,
 
 st.set_page_config(initial_sidebar_state='expanded')
 
-st.title('Crypto.com History Analysis')
+st.title('Crypto.com CSV Helper')
 
 crypto_wallet_history = fetch_crypto_wallet_history()
 fiat_wallet_history = fetch_fiat_wallet_history()
@@ -116,3 +116,11 @@ if not fiat_wallet_history.empty:
     pass
 else:
     st.warning('Fiat wallet history has not been uploaded')
+
+st.success('''
+           If you find this utility tool helpful, please
+           don\'t forget to check out the project at
+           https://github.com/awesome-CRO/explore_exported_csv
+           and help
+           make it better.
+           ''')
