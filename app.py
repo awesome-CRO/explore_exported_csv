@@ -79,6 +79,7 @@ if not combined_history.empty:
 
 st.header('Visa Card')
 if not visa_card_history.empty:
+    st.warning('This section is still WIP')
     if 'raw_table' in features:
         st.subheader('Visa Card Transaction Table')
         st.write(visa_card_history)
@@ -107,13 +108,13 @@ else:
 
 st.header('Crypto Wallet')
 if not crypto_wallet_history.empty:
-    pass
+    st.warning('This section is still WIP')
 else:
     st.warning('Crypto wallet history has not been uploaded')
 
 st.header('Fiat Wallet')
 if not fiat_wallet_history.empty:
-    pass
+    st.warning('This section is still WIP')
 else:
     st.warning('Fiat wallet history has not been uploaded')
 
