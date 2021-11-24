@@ -1,6 +1,14 @@
 {
     "python.formatting.provider": "yapf",
     "cSpell.words": [
+        "Roadmap",
         "streamlit"
-    ]
+    ],
+    "markdownlint.config": {
+        "MD028": false,
+        "MD025": {
+            "front_matter_title": ""
+        }
+    },
+    "editor.formatOnSave": true
 }
