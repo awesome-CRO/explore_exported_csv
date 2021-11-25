@@ -1,5 +1,5 @@
 import streamlit as st
-from sections.crypto_wallet import crypto_wallet_section
+from sections.crypto_wallet.index import crypto_wallet_section
 from sections.fiat_wallet import fiat_wallet_section
 from sections.footer import footer_section
 from sections.header import header_section

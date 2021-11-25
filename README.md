@@ -8,4 +8,5 @@
 - [ ] Add some way to gate the API usage to certain members
   - [ ] Add CRO price fetching
   - [ ] Add all coin price fetching (optional)
+- [ ] Add some password field in sidebar for CoinMarketCap token to fetch prices
 - [ ] Add some instructions on how to add custom features
