@@ -28,22 +28,44 @@ class CoinAnalyzer:
                                            'mco_stake_reward']
         self.reimbursement = self.related[self.related['Transaction Kind'] ==
                                           'reimbursement']
+        self.crypto_purchase_summary = self._get_crypto_purchase_summary()
+        self.van_purchase_summary = self._get_van_purchase_summary()
+        self.exchange_purchase_summary = self._get_exchange_purchase_summary()
+        # The overall summary should be calculated at the end
+        self.overall_summary = self._get_overall_summary()
 
-    def get_crypto_purchase_summary(self) -> Tuple[float, float, float]:
+    def _get_overall_summary(self) -> Tuple[float, float, float]:
+        overall_amount = sum([
+            self.crypto_purchase_summary['amount'],
+            self.van_purchase_summary['amount'],
+            self.exchange_purchase_summary['amount']
+        ])
+        overall_cost = sum([
+            self.crypto_purchase_summary['cost'],
+            self.van_purchase_summary['cost'],
+            self.exchange_purchase_summary['cost']
+        ])
+        avg_cost = overall_cost / overall_amount
+        return {
+            'avg': avg_cost,
+            'amount': overall_amount,
+            'cost': overall_cost
+        }
+
+    def _get_crypto_purchase_summary(self) -> Tuple[float, float, float]:
         amount = self.crypto_purchases['Amount'].sum()
         cost = self.crypto_purchases['Native Amount'].sum()
         avg_cost = cost / amount
-        return avg_cost, amount, cost
+        return {'avg': avg_cost, 'amount': amount, 'cost': cost}
 
-    def get_van_purchase_summary(self) -> Tuple[float, float, float]:
+    def _get_van_purchase_summary(self) -> Tuple[float, float, float]:
         amount = self.van_purchases['To Amount'].sum()
         cost = self.van_purchases['Native Amount'].sum()
         avg_cost = cost / amount
-        return avg_cost, amount, cost
+        return {'avg': avg_cost, 'amount': amount, 'cost': cost}
 
-    def get_crypto_purchase_exchange_summary(
-            self) -> Tuple[float, float, float]:
+    def _get_exchange_purchase_summary(self) -> Tuple[float, float, float]:
         amount = self.buy_crypto_exchanges['To Amount'].sum()
         cost = self.buy_crypto_exchanges['Native Amount'].sum()
         avg_cost = cost / amount
-        return avg_cost, amount, cost
+        return {'avg': avg_cost, 'amount': amount, 'cost': cost}
